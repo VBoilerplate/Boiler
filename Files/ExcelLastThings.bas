@@ -61,17 +61,22 @@ Public Function LocateValueRow(ByVal textTarget As String, _
                 Optional lookForPart = False, _
                 Optional lookUpToBottom = True) As Long
 
-    Dim valuesFound      As Long
-    Dim localRange            As Range
-    Dim myCell           As Range
-
+    Dim valuesFound         As Long
+    Dim localRange          As Range
+    Dim myCell              As Range
+    Dim lastRowOnColumn1    As Long
+    
     LocateValueRow = -999
+    
     valuesFound = moreValuesFound
-    Set localRange = wksTarget.Range(wksTarget.Cells(1, col), wksTarget.Cells(Rows.Count, col))
+    lastRowOnColumn1 = LastRow(wksTarget.Name)
+    
+    
+    Set localRange = wksTarget.Range(wksTarget.Cells(1, col), wksTarget.Cells(lastRowOnColumn1, col))
 
     For Each myCell In localRange
         If lookForPart Then
-            If textTarget = Left(myCell, Len(textTarget)) Then
+            If UCase(textTarget) = UCase(Left(myCell, Len(textTarget))) Then
                 If valuesFound = 1 Then
                     LocateValueRow = myCell.Row
                     If lookUpToBottom Then Exit Function
@@ -80,7 +85,7 @@ Public Function LocateValueRow(ByVal textTarget As String, _
                 End If
             End If
         Else
-            If textTarget = Trim(myCell) Then
+            If UCase(textTarget) = UCase(Trim(myCell)) Then
                 If valuesFound = 1 Then
                     LocateValueRow = myCell.Row
                     If lookUpToBottom Then Exit Function
@@ -92,7 +97,7 @@ Public Function LocateValueRow(ByVal textTarget As String, _
     Next myCell
 
 End Function
-
+                            
 Public Function LocateValueCol(ByVal textTarget As String, _
                 ByRef wksTarget As Worksheet, _
                 Optional rowNeeded As Long = 1, _
