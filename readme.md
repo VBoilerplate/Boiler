@@ -1,5 +1,8 @@
 # VBA Boilerplate
 
+## Migrating back to:
+https://github.com/Vitosh/VBA_personal
+
 ## The idea 
 Boilerplate is an Excel binary file with VBA code in it, which can be used for every new VBA project as a boilerplate.
 Building a boilerplate, which is to be used by as a start point for every VBA project was long in my mind. Somewhere in 2016 I have decided to put all the useful VBA code that I am using in a single repository. 
