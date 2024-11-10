@@ -1,6 +1,6 @@
 # VBA Boilerplate
 
-## Migrating back to:
+## Migrating the repository to:
 - ## https://github.com/Vitosh/VBA_personal
 ## This repository is no longer maintained.
 
